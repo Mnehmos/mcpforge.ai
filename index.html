@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCPForge.ai | Custom MCP Development & Hosting</title>
+    <meta name="description" content="Professional MCP development, customization, and hosting services. Streamline your AI workflows with custom Model Context Protocol solutions.">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #0f172a;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --success: #10b981;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+            line-height: 1.6;
+            color: var(--secondary);
+            background-color: var(--light);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        .hero {
+            padding: 6rem 0;
+            background: linear-gradient(to right, #f8fafc, #eff6ff);
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .features {
+            padding: 6rem 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background-color: var(--light);
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .pricing {
+            padding: 6rem 0;
+            background-color: var(--light);
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .pricing-card {
+            background-color: white;
+            padding: 3rem 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .pricing-card.featured {
+            border: 2px solid var(--primary);
+            position: relative;
+        }
+        
+        .featured-tag {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 1.5rem 0;
+            color: var(--secondary);
+        }
+        
+        .price span {
+            font-size: 1.5rem;
+            color: var(--gray);
+        }
+        
+        .pricing-features {
+            margin: 2rem 0;
+            text-align: left;
+        }
+        
+        .pricing-features li {
+            margin-bottom: 0.75rem;
+            list-style-type: none;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .pricing-features li::before {
+            content: "✓";
+            color: var(--success);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        .contact {
+            padding: 6rem 0;
+            background-color: white;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--light);
+            padding: 3rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 0.375rem;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        
+        textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        button:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            margin: 0 1rem;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .copyright {
+            color: var(--gray);
+            font-size: 0.875rem;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.875rem;
+            }
+            
+            .contact-form {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">MCP<span>Forge.ai</span></a>
+            <a href="#contact" class="cta-button">Get Started</a>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>Custom MCP Development<br>for AI-Powered Workflows</h1>
+            <p>Unlock the full potential of AI with custom Model Context Protocol tools tailored to your specific business needs.</p>
+            <a href="#pricing" class="cta-button">See Our Packages</a>
+        </div>
+    </section>
+    
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose MCPForge?</h2>
+                <p>We help businesses unlock new capabilities with custom MCP development and hosting.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Custom MCP Development</h3>
+                    <p>Get a custom-built MCP solution tailored specifically to your business needs and workflow requirements.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Managed MCP Hosting</h3>
+                    <p>We handle the hosting, maintenance, and updates so you can focus on utilizing AI to grow your business.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Integration Services</h3>
+                    <p>Seamlessly connect your existing tools and APIs with your new MCP solution for maximum productivity.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Performance Optimization</h3>
+                    <p>Ensure your MCPs run efficiently with our performance tuning and optimization services.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Secure & Reliable</h3>
+                    <p>Built with security in mind, our MCPs follow best practices for data protection and reliable operation.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Training & Support</h3>
+                    <p>Get comprehensive documentation and support to help your team make the most of your MCP tools.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>Simple, Transparent Pricing</h2>
+                <p>Choose the package that fits your business needs and budget.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Basic Package</h3>
+                    <div class="price">$499<span>/one-time</span></div>
+                    <p>Perfect for startups and small businesses looking to enhance AI capabilities.</p>
+                    <ul class="pricing-features">
+                        <li>Single MCP development</li>
+                        <li>Basic API integrations</li>
+                        <li>Standard documentation</li>
+                        <li>14-day support</li>
+                        <li>Self-hosting guidance</li>
+                    </ul>
+                    <a href="#contact" class="cta-button">Get Started</a>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="featured-tag">Most Popular</div>
+                    <h3>Professional Package</h3>
+                    <div class="price">$1,499<span>/one-time</span></div>
+                    <p>For businesses requiring custom solutions with multiple integrations.</p>
+                    <ul class="pricing-features">
+                        <li>Custom MCP development</li>
+                        <li>Multiple API integrations</li>
+                        <li>Comprehensive documentation</li>
+                        <li>30-day support</li>
+                        <li>One year of managed hosting</li>
+                        <li>Performance optimization</li>
+                    </ul>
+                    <a href="#contact" class="cta-button">Get Started</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Enterprise Package</h3>
+                    <div class="price">$3,999<span>/one-time</span></div>
+                    <p>Comprehensive solution for larger organizations with complex requirements.</p>
+                    <ul class="pricing-features">
+                        <li>Multiple custom MCPs</li>
+                        <li>Advanced integrations</li>
+                        <li>Enterprise-grade documentation</li>
+                        <li>90-day support</li>
+                        <li>Two years of managed hosting</li>
+                        <li>Performance optimization</li>
+                        <li>Security hardening</li>
+                        <li>Team training session</li>
+                    </ul>
+                    <a href="#contact" class="cta-button">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Ready to Transform Your AI Workflow?</h2>
+                <p>Fill out the form below to get started with your custom MCP solution.</p>
+            </div>
+            <form class="contact-form" action="https://formspree.io/f/mdoqywlq" method="POST">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="company">Company</label>
+                    <input type="text" id="company" name="company">
+                </div>
+                <div class="form-group">
+                    <label for="package">Interested Package</label>
+                    <select id="package" name="package">
+                        <option value="Basic">Basic Package ($499)</option>
+                        <option value="Professional" selected>Professional Package ($1,499)</option>
+                        <option value="Enterprise">Enterprise Package ($3,999)</option>
+                        <option value="Custom">Custom Solution (Let's discuss)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Project Details</label>
+                    <textarea id="message" name="message" placeholder="Describe your MCP needs and how you plan to use it in your workflow..." required></textarea>
+                </div>
+                <button type="submit">Submit Request</button>
+            </form>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <a href="#" class="logo" style="color: white;">MCP<span style="color: #94a3b8;">Forge.ai</span></a>
+            <div class="footer-links">
+                <a href="#features">Features</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#contact">Contact</a>
+                <a href="mailto:info@mcpforge.ai">info@mcpforge.ai</a>
+            </div>
+            <p class="copyright">© 2025 MCPForge.ai. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Simple analytics -->
+    <script>
+        // Form handling
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            submitBtn.innerHTML = 'Sending...';
+            submitBtn.disabled = true;
+            
+            // We're using Formspree for simplicity
+            // The actual form submission is handled by their service
+        });
+    </script>
+</body>
+</html>
